@@ -1,0 +1,17 @@
+.table-wrapper {
+  overflow-x: scroll;
+  overflow-y: visible;
+}
+
+.table-wrapper table {
+  width: 100%;
+}
+
+td,
+th {
+  padding: 10px;
+}
+
+th:first-child {
+  left: 0;
+}
