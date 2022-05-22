@@ -30,6 +30,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'consistent-return': 'off',
     'no-plusplus': 'off',
+    'global-require': 'off',
+    'import/no-extraneous-dependencies': 'off',
     camelcase: 'off',
   },
 };

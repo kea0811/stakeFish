@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex w-full table-wrapper">
-      <table>
+      <table id="exchange-table">
         <thead className="header">
           <tr>
             <th className="w-1/5">#</th>
@@ -30,7 +30,7 @@ const Dashboard = () => {
                   <img src={item.image} className="rounded-full " alt="logo" />
                   {item.name}
                 </td>
-                <td>{item.country || '-'}</td>
+                <td>{item.country}</td>
               </tr>
             ))
           }

@@ -13,7 +13,7 @@ import { fetcher } from '../../library';
 
 const Detail = () => {
   const { exchangeid } = useParams();
-  const { data, isValidating } = useSWR(exchangeid ? `/exchanges/${exchangeid}` : '', fetcher);
+  const { data, isValidating } = useSWR(exchangeid && `/exchanges/${exchangeid}`, fetcher);
   const displayMapping = {
     facebook_url: {
       label: 'Facebook',
@@ -60,18 +60,17 @@ const Detail = () => {
 
     const {
       facebook_url, twitter_handle, reddit_url, slack_url, telegram_url,
-    } = data || {};
+    } = data;
     const allSocialMedia = {
       facebook_url, twitter_handle, reddit_url, slack_url, telegram_url,
     };
 
     return Object.entries(allSocialMedia).map(([key, item]) => {
       const { icon: Icon, label, prefix } = displayMapping[key];
-      return item !== '' && (
+      return item !== '' && item && (
         <a href={!item.includes('http') ? `${prefix}${item}` : item} key={key} className="break-words">
           <div className="flex items-center gap-2">
             <Icon className="text-xl" />
-            {' '}
             {label}
           </div>
         </a>
@@ -93,9 +92,7 @@ const Detail = () => {
         <a href={item} key={key} className="break-all">
           <div className="flex items-center gap-2">
             <IoGlobeOutline className="text-xl" />
-            {' '}
             Other link
-            {' '}
             {count}
           </div>
         </a>,
